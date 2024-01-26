@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bad+Script&family=Rubik+Doodle+Shadow&display=swap");
+
+body {
+  color: white;
+  background: #191919;
+  font-family: "Roboto", sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 200px;
+  width: 100%;
+  background: #111111;
+}
+
+.header img {
+  margin-top: 5px;
+  height: 40px;
+}
+
+.header h1 {
+  font-family: "Rubik Doodle Shadow", sans-serif;
+  font-size: 3rem;
+  font-variant: small-caps;
+  background: linear-gradient(to left, #8f19d1, #44c7fe);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 650px;
+  height: 100vh;
+  margin: auto;
+}
+
+.input-form {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 30px;
+  margin-top: -22px;
+  gap: 20px;
+}
+
+.input-form input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  margin-left: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: 0;
+  border-radius: 10px;
+  background: #262626;
+  color: white;
+}
+
+.input-form button {
+  width: 5rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0;
+  border-radius: 10px;
+  margin-right: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #8e19d196;
+  color: white;
+}
+
+.input-form button:hover {
+  background-color: #8f19d1;
+}
+
+.tasks-maded-created {
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.603);
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+.tasks-maded-created .tasks-created {
+  color: #2e85aa;
+  font-weight: bold;
+  text-shadow: black;
+}
+
+.tasks-maded-created .tasks-maded {
+  color: #8f19d1;
+  font-weight: bold;
+}
+
+.tarefas {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 70px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #262626;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+}
+
+.tarefas:hover {
+  background: #2c2c2c;
+}
+
+.tarefas p {
+  display: flex;
+  text-align: justify;
+  align-items: center;
+  width: 100%;
+}
+
+.tarefas-concluidas {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 70px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #262626;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tarefas-concluidas {
+  background: #2c2c2c;
+}
+
+.tarefas-concluidas p {
+  display: flex;
+  text-align: justify;
+  text-decoration: line-through;
+  align-items: center;
+  width: 100%;
+}
+
+.button-del {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-del button {
+  display: flex;
+  border: 0;
+  background: none;
+  min-width: 32px;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+.button-del button:hover {
+  opacity: 1;
+}
+
+.button-del button img {
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+}
+
+.lista-vazia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  gap: 30px;
+  color: rgba(122, 122, 122, 0.76);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}

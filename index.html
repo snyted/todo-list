@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/reset.css" />
+  </head>
+  <body>
+    <header class="header">
+      <img src="images/pesquisa.png" alt="Lista de Tarefas" />
+      <h1>Todo List</h1>
+    </header>
+    <main class="container">
+      <section>
+        <form class="input-form">
+          <input type="text" name="nova-tarefa" id="nova-tarefa" />
+          <button id="button" type="button">Criar</button>
+        </form>
+      </section>
+      <section class="tasks-maded-created">
+        <h2 class="tasks-created">
+          Tarefas Criadas: <span class="t-c">0</span>
+        </h2>
+        <h2 class="tasks-maded">
+          Tarefas Concluidas: <span class="t-m">0</span>
+        </h2>
+      </section>
+      <section class="lista-vazia">
+        <img src="images/lista-vazia.png" alt="Lista de tarefas vazia" />
+        <div class="texto">
+          <p>
+            <strong>Você ainda não adicionou nenhuma tarefa!</strong>
+          </p>
+          <p>Crie tarefas e organize seus itens a fazer.</p>
+        </div>
+      </section>
+      <section class="container-tasks"></section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
