@@ -7,12 +7,12 @@ const formEl = document.querySelector(".input-form");
 let taskMaded = document.querySelector(".t-m");
 let taskCreated = document.querySelector(".t-c");
 
-const myListArr = [];
+let myListArr = [];
 
 function btnNewTask() {
   inputEl.value === ""
-    ? alert("Digite alguma tarefa para ser feita.")
-    : myListArr.push({ text: inputEl.value, completed: false });
+  ? alert("Digite alguma tarefa para ser feita.")
+  : myListArr.push({ text: inputEl.value, completed: false });
   inputEl.value = "";
   inputEl.focus();
   arrToContainer();
@@ -22,8 +22,8 @@ checkTask();
 
 function checkTask() {
   myListArr.length === 0
-    ? (emptyListEl.style.display = "flex")
-    : (emptyListEl.style.display = "none");
+  ? (emptyListEl.style.display = "flex")
+  : (emptyListEl.style.display = "none");
 }
 
 function arrToContainer() {
@@ -34,22 +34,22 @@ function arrToContainer() {
     newTaskAdd =
       newTaskAdd +
       `<div class="${divTarefas} ${itemCompleted}">
-    <p class="add-tarefa" onclick="verificarTarefa(${index})">${item.text}</p>
+      <p class="add-tarefa" onclick="taskVerifying(${index})">${item.text}</p>
     <div class="button-del">
-    <button name="del-btn" type="button" onclick="deletarTarefa(${index})">
+    <button name="del-btn" type="button" onclick="delTask(${index})">
     <img src="images/delete.png" alt="Lixeira" />
     </button>
     </div>
     </div> `;
-
+    
     taskCreated.innerText = myListArr.length;
   });
-
+  
   containerTaks.innerHTML = newTaskAdd;
-  localStorage.setItem("list", JSON.stringify(myListArr));
+  localStorage.setItem("lista", JSON.stringify(myListArr));
 }
 
-function verificarTarefa(index) {
+function taskVerifying(index) {
   if (myListArr[index].completed) {
     myListArr[index].completed = false;
     taskMaded.innerText--;
@@ -61,7 +61,7 @@ function verificarTarefa(index) {
   checkTask();
 }
 
-function deletarTarefa(index) {
+function delTask(index) {
   myListArr.splice(index, 1);
   arrToContainer();
   checkTask();
@@ -71,11 +71,13 @@ function deletarTarefa(index) {
 
 function localStorageMethod() {
   const tasksLocalStorage = localStorage.getItem('lista');
+  console.log('Valor recuperado do local storage:', tasksLocalStorage);
   if (tasksLocalStorage) {
     myListArr = JSON.parse(tasksLocalStorage);
   }
-
+  checkTask()
   arrToContainer();
+  
 }
 
 localStorageMethod();
@@ -84,3 +86,4 @@ formEl.addEventListener("submit", (e) => {
   e.preventDefault();
   btnNewTask();
 });
+
