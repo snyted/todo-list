@@ -102,66 +102,64 @@ body {
   font-weight: bold;
 }
 
-.tarefas {
+.both {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 700px;
   min-height: 70px;
-  margin-top: 10px;
   margin-bottom: 15px;
-  padding: 10px;
   border-radius: 10px;
-  background: #262626;
-  cursor: pointer;
   font-family: "Roboto", sans-serif;
-}
-
-.tarefas:hover {
-  background: #2c2c2c;
-}
-
-.tarefas p {
-  display: flex;
-  text-align: justify;
-  align-items: center;
-  width: 100%;
-}
-
-.tarefas-concluidas {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  min-height: 70px;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 10px;
   background: #262626;
-  opacity: 0.3;
   cursor: pointer;
-  transition: all 0.3s;
+}
+.both .add-tarefa {
+  word-wrap: break-word;
+  overflow: auto;
+  text-overflow: ellipsis;
+  padding: 10px;
+  text-align: center;
+  /* order: 0; */
 }
 
-.tarefas-concluidas {
-  background: #2c2c2c;
+.check, .check-done {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  min-width: 22px;
+  margin-left: 10px;
+  height: 22px;
+  border: 2px solid;
+  transform: scale(var(--ggs,1));
+  border-radius: 4px
 }
 
-.tarefas-concluidas p {
-  display: flex;
-  text-align: justify;
-  text-decoration: line-through;
-  align-items: center;
-  width: 100%;
+.check:hover {
+  color: rgb(58, 172, 58);
 }
-
+.check-done::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  left: 3px;
+  top: -1px;
+  width: 6px;
+  height: 10px;
+  border-width: 0 2px 2px 0;
+  border-style: solid;
+  transform-origin: bottom left;
+  transform: rotate(45deg);
+  color: rgb(58, 172, 58);
+}
 .button-del {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  order: 1;
+  margin-left: auto;
+  min-width: 50px;
 }
 
 .button-del button {
-  display: flex;
   border: 0;
   background: none;
   min-width: 32px;
@@ -176,6 +174,16 @@ body {
 .button-del button img {
   width: 100%;
   height: 40px;
+  cursor: pointer;
+}
+
+.both:hover {
+  background: #2c2c2c;
+}
+
+.tarefas-concluidas {
+  text-decoration: line-through;
+  opacity: 0.3;
   cursor: pointer;
 }
 
