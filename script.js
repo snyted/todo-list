@@ -51,6 +51,7 @@ function arrToContainer() {
       `;
 
     taskCreated.innerText = myListArr.length;
+    console.log(myListArr);
   });
 
   containerTasks.innerHTML = newTaskAdd;
@@ -79,7 +80,6 @@ function delTask(index) {
 
 function localStorageMethod() {
   const tasksLocalStorage = localStorage.getItem("lista");
-  console.log("Valor recuperado do local storage:", tasksLocalStorage);
   if (tasksLocalStorage) {
     myListArr = JSON.parse(tasksLocalStorage);
   }
