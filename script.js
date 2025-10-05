@@ -7,31 +7,26 @@ const formEl = document.querySelector(".input-form");
 let taskMaded = document.querySelector(".t-m");
 let taskCreated = document.querySelector(".t-c");
 
-let myListArr = [];
+let myList = [];
 
-function btnNewTask() {
-  inputEl.value === ""
-    ? alert("Digite alguma tarefa para ser feita.")
-    : myListArr.push({ text: inputEl.value, completed: false });
-  inputEl.value = "";
-  inputEl.focus();
+function reorderTasks() {
+  myList.sort((a, b) => a.isComplete - b.isComplete);
   arrToContainer();
-  checkTask();
-}
-checkTask();
-
-function checkTask() {
-  myListArr.length === 0
-    ? (emptyListEl.style.display = "flex")
-    : (emptyListEl.style.display = "none");
 }
 
 function arrToContainer() {
   let newTaskAdd = "";
-  myListArr.forEach((item, index) => {
-    const itemCompleted = item.completed ? "tarefas-concluidas" : "";
-    const divTarefas = item.completed ? "" : "tarefas";
-    const checkDone = item.completed ? "check-done" : "check";
+  myList.forEach((item, index) => {
+    let itemCompleted = "";
+    let divTarefas = "tarefas";
+    let checkDone = "check";
+
+    if (item.isComplete) {
+      itemCompleted = "tarefas-concluidas";
+      divTarefas = "";
+      checkDone = "check-done";
+    }
+
     newTaskAdd =
       newTaskAdd +
       `   
@@ -43,53 +38,72 @@ function arrToContainer() {
               <button
                 class="del-btn"
                 type="button"
-                onclick="delTask(${index})"
-              ><img src="images/delete.png" alt="Lixeira" />
-              </button></button>
+                onclick="delTask(${index})">
+                  <img src="images/trash.svg" alt="Lixeira" />
+                </button>
             </div>
           </div>
       `;
 
-    taskCreated.innerText = myListArr.length;
-    console.log(myListArr);
+    taskCreated.innerText = myList.length;
   });
 
   containerTasks.innerHTML = newTaskAdd;
-  localStorage.setItem("lista", JSON.stringify(myListArr));
+  localStorage.setItem("lista", JSON.stringify(myList));
 }
 
 function taskVerifying(index) {
-  if (myListArr[index].completed) {
-    myListArr[index].completed = false;
-    taskMaded.innerText--;
+  if (myList[index].isComplete) {
+    myList[index].isComplete = false;
+    taskMaded.textContent--;
   } else {
-    myListArr[index].completed = true;
-    taskMaded.innerText++;
+    myList[index].isComplete = true;
+    taskMaded.textContent++;
   }
   arrToContainer();
   checkTask();
 }
 
 function delTask(index) {
-  myListArr.splice(index, 1);
+  myList.splice(index, 1);
   arrToContainer();
   checkTask();
-  taskCreated.innerText = myListArr.length;
+  taskCreated.innerText = myList.length;
   taskMaded.innerText = document.querySelectorAll(".tarefas-concluidas").length;
 }
 
-function localStorageMethod() {
-  const tasksLocalStorage = localStorage.getItem("lista");
-  if (tasksLocalStorage) {
-    myListArr = JSON.parse(tasksLocalStorage);
-  }
-  checkTask();
-  arrToContainer();
-}
-
-localStorageMethod();
 buttonEl.addEventListener("click", btnNewTask);
 formEl.addEventListener("submit", (e) => {
   e.preventDefault();
   btnNewTask();
 });
+
+function btnNewTask() {
+  if (inputEl.value.trim() === "") return;
+  myList.push({ text: inputEl.value, isComplete: false });
+
+  inputEl.value = "";
+  inputEl.focus();
+
+  arrToContainer();
+  checkTask();
+}
+
+function localStorageMethod() {
+  const tasksLocalStorage = localStorage.getItem("lista");
+
+  if (tasksLocalStorage) {
+    myList = JSON.parse(tasksLocalStorage);
+  }
+
+  checkTask();
+  arrToContainer();
+}
+
+function checkTask() {
+  myList.length ? (emptyListEl.style.display = "none") : "block";
+}
+
+localStorageMethod();
+
+console.log(myList);
